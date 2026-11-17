@@ -1,0 +1,32 @@
+(version 1)
+
+(rule "UCI - All Signal Traces"
+    (constraint track_width (min 0.30mm)))
+
+(rule "UCI - Component Power Branches"
+    (condition "A.hasNetclass('Power_Branch')")
+    (constraint track_width (min 0.50mm)))
+
+(rule "UCI - IR Current Paths"
+    (condition "A.hasNetclass('IR_Current')")
+    (constraint track_width (min 0.50mm)))
+
+(rule "UCI - Motor Outputs"
+    (condition "A.hasNetclass('Motor_Output')")
+    (constraint track_width (min 0.50mm)))
+
+(rule "UCI - Analog Power"
+    (condition "A.hasNetclass('Analog_Power')")
+    (constraint track_width (min 0.50mm)))
+
+(rule "UCI - Main Power Minimum"
+    (condition "A.NetName == '+5V' || A.NetName == '+3V3' || A.NetName == 'VCC'")
+    (constraint track_width (min 0.50mm)))
+
+(rule "UCI - Analog Ground"
+    (condition "A.NetName == 'AGND'")
+    (constraint track_width (min 1.00mm)))
+
+(rule "UCI - Battery Positive"
+    (condition "A.NetName == 'Net-(BT1-+)'")
+    (constraint track_width (min 2.00mm)))
